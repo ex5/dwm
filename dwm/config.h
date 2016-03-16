@@ -26,11 +26,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gvim",     NULL,       NULL,       0,                 1,           0 },
+	{ "Gvim",     NULL,       NULL,       0,                 0,           0 },
 	{ "Gimp",     NULL,       NULL,       1 << 8,            0,           1 },
     { "Firefox",  NULL,       NULL,       1,                 0,           1 },
     { "Thunderbird", NULL,    NULL,       1 << 4,            0,           1 },
-    { "HipChat", NULL,    NULL,       1 << 4,            0,               0 },
+    { "HipChat", NULL,    NULL,       1 << 4,                0,           0 },
 };
 
 /* layout(s) */
