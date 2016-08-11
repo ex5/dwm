@@ -1,0 +1,4 @@
+pkg/
+*.o
+*.xz
+*.desktop
