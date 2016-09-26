@@ -184,6 +184,7 @@ static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
+static void mirrorlayout(const Arg *arg);
 static void monocle(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
@@ -1164,6 +1165,15 @@ maprequest(XEvent *e)
 		return;
 	if (!wintoclient(ev->window))
 		manage(ev->window, &wa);
+}
+
+void
+mirrorlayout(const Arg *arg) {
+	if(!selmon->lt[selmon->sellt]->arrange)
+		return;
+	selmon->ltaxis[0] *= -1;
+	selmon->pertag->ltaxes[selmon->pertag->curtag][0] = selmon->ltaxis[0];
+	arrange(selmon);
 }
 
 void
