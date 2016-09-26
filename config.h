@@ -1,1 +1,1 @@
-/home/railla/dwm/src/dwm-6.1/config.h
+src/config.h
