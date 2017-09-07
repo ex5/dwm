@@ -29,12 +29,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gvim",     NULL,       NULL,       0,                 0,           0 },
+	{ "Gvim",     NULL,       NULL,       0,                 0,          -1 },
 	{ "Gimp",     NULL,       NULL,       1 << 8,            0,           1 },
     { "Firefox",  NULL,       NULL,       1,                 0,           1 },
     { "Thunderbird", NULL,    NULL,       1 << 4,            0,           1 },
     { "HipChat",  NULL,       NULL,       1 << 4,            0,           0 },
-    { "trayer",   NULL,       NULL,       ~0,                0,           -1 },
+    { "Slack",    NULL,       NULL,       1 << 4,            0,           0 },
+    { "trayer",   NULL,       NULL,       ~0,                0,          -1 },
     { "stalontrayer",   NULL,       NULL,       ~0,                0,           -1 },
 };
 
@@ -70,7 +71,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "terminator", NULL };
+static const char *lockcmd[]  = { "slock", NULL };
 static const char  *gtranslate[] = { "/usr/local/bin/gtranslate",  NULL };
 
 static Key keys[] = {
@@ -81,10 +83,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
