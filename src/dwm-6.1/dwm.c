@@ -2231,6 +2231,10 @@ nview(const Arg *arg) {
 void
 view(const Arg *arg)
 {
+	int di;
+	unsigned int dui;
+	Window win, dummy;
+
 	unsigned int i;
 	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
 		return;
@@ -2257,6 +2261,11 @@ view(const Arg *arg)
 	selmon->ltaxis[2] = selmon->pertag->ltaxes[selmon->pertag->curtag][2];
 	focus(NULL);
 	arrange(selmon);
+
+	/* Focus window at current pointer location. */
+	XQueryPointer(dpy, root, &dummy, &win, &di, &di, &di, &di, &dui);
+	focus(wintoclient(win));
+	XFlush(dpy);
 }
 
 Client *
