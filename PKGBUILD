@@ -4,7 +4,7 @@
 # Contributor: Grigorios Bouzakis <grbzks@gmail.com>
 
 pkgname=dwm
-pkgver=6.1
+pkgver=6.2
 pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
