@@ -2,3 +2,4 @@ pkg/
 *.o
 *.xz
 *.desktop
+dwm-debug-*
